@@ -34,7 +34,7 @@ it.describe('FORM PAGE TYPE', () => {
         //await page.pause()
         await page.locator('[for="companyname"]~input[placeholder="Company"]').fill('LLC Happy')
         await page.selectOption('select[name="country"]', {label: 'United States'} )
-        await page.locator('label:has-text("City*") ~input#inputCity').fill('Orlando')
+        await page.locator('label:has-text("City*") ~ input#inputCity').fill('Orlando')
         await page.getByPlaceholder('Address 1').fill('Orlando')
         await page.getByRole('textbox', {name: "Address 2"}).fill('Orlando street')
         await page.getByRole('textbox', {name: "Zip code"}).fill('11204')
