@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { test as it, expect } from "@playwright/test";
-import _ from 'lodash'
+import _ from "lodash";
 
 export class DatePicker {
   readonly page: Page;
@@ -43,41 +43,45 @@ export class DatePicker {
     const header = this.page.locator(this.header);
     await expect(header).toContainText("Date Picker");
   }
-randomYearNumber = _.random(1, 50)
-date = _.random(1, 30)
-  public async dateFromToday(){
+  randomYearNumber = _.random(1, 50);
+  date = _.random(1, 30);
+  public async dateFromToday() {
     let obj = {
-        Jan:"01",
-        Feb:"02",
-        Mar:"03",
-        Apr:"04",
-        May:"05",
-        Jun:"06",
-        Jul:"07",
-        Aug:"08",
-        Sep:"09",
-        Oct:"10",
-        Nov:"11",
-        Dec:"12"
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12",
+    };
+
+    await this.page.locator(this.fromInput).click();
+
+    for (let i = 0; i < this.randomYearNumber; i++) {
+      await this.page.locator(this.prevYear).click();
     }
-    await this.page.locator(this.fromInput).click()
-    console.log(this.randomYearNumber)
-
-    for(let i = 0; i < this.randomYearNumber; i++){
-        await this.page.locator(this.prevYear).click()
-    }
-
-    let year = await this.page.locator(this.dateOfTheYear).textContent()
-    let month = await this.page.locator(this.dateOfTheMonth)
-    .locator('[selected="selected"]')
-    .textContent()
-    console.log(year)
-    console.log(month)
-    console.log(this.date)
-    await this.page.locator(this.dateFromComponent).getByRole('link', {name: this.date, exact:true}).click()
-    expect(await this.page.locator(this.fromInput).inputValue()).toBe(`${obj[month]}/${this.date}/${year}`)
-   
-
-
+    console.log(this.randomYearNumber);
+    let year = await this.page.locator(this.dateOfTheYear).textContent();
+    let month = await this.page
+      .locator(this.dateOfTheMonth)
+      .locator('[selected="selected"]')
+      .textContent();
+    console.log(year);
+    console.log(month);
+    console.log(this.date);
+    await this.page
+      .locator(this.dateFromComponent)
+      .getByRole("link", { name: this.date, exact: true })
+      .click();
+    expect(await this.page.locator(this.fromInput).inputValue()).toBe(
+      `${obj[month]}/${this.date}/${year}`
+    );
+    console.log(await this.page.locator(this.fromInput).inputValue());
   }
 }
