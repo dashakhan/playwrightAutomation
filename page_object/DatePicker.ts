@@ -43,8 +43,11 @@ export class DatePicker {
     const header = this.page.locator(this.header);
     await expect(header).toContainText("Date Picker");
   }
+
   randomYearNumber = _.random(1, 50);
-  date = _.random(1, 30);
+  date = _.random(1, 28);
+  dateUpdated = (num) => (num < 10 ? "0" + num : num);
+
   public async dateFromToday() {
     let obj = {
       Jan: "01",
@@ -67,7 +70,11 @@ export class DatePicker {
       await this.page.locator(this.prevYear).click();
     }
     console.log(this.randomYearNumber);
-    let year = await this.page.locator(this.dateOfTheYear).textContent();
+
+    let year = await this.page
+    .locator(this.dateOfTheYear)
+    .textContent();
+    
     let month = await this.page
       .locator(this.dateOfTheMonth)
       .locator('[selected="selected"]')
@@ -80,7 +87,7 @@ export class DatePicker {
       .getByRole("link", { name: this.date, exact: true })
       .click();
     expect(await this.page.locator(this.fromInput).inputValue()).toBe(
-      `${obj[month]}/${this.date}/${year}`
+      `${obj[month]}/${this.dateUpdated(this.date)}/${year}`
     );
     console.log(await this.page.locator(this.fromInput).inputValue());
   }
