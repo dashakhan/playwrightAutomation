@@ -52,7 +52,7 @@ it.describe('FORM LAYOUTS', ()=>{
     })
 
     it('Horizontal form', async ({page}) =>{
-        await page.goto('http://localhost:4200/pages/forms/layouts')
+       
         await page.locator('[id="inputEmail3"]').fill('test@gmail.com')
         await page.locator('[id="inputPassword3"]').fill('123test')
         await page.locator('[class="custom-checkbox"]').nth(2).check()

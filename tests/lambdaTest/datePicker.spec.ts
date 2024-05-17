@@ -8,5 +8,6 @@ it.describe('DATE PICKER', () =>{
         await page.goto('https://www.lambdatest.com/selenium-playground/jquery-date-picker-demo')
         await datePicker.verifyHeader()
         await datePicker.dateFromToday()
+        await datePicker.futureDateFromToday()
     })
 })

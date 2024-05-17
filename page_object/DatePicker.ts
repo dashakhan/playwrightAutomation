@@ -3,6 +3,7 @@ import { test as it, expect } from "@playwright/test";
 import _ from "lodash";
 
 export class DatePicker {
+
   readonly page: Page;
   constructor(page: Page) {
     this.page = page;
@@ -86,9 +87,58 @@ export class DatePicker {
       .locator(this.dateFromComponent)
       .getByRole("link", { name: this.date, exact: true })
       .click();
-    expect(await this.page.locator(this.fromInput).inputValue()).toBe(
+    expect(await this.page.locator(this.fromInput)
+      .inputValue())
+      .toBe(
       `${obj[month]}/${this.dateUpdated(this.date)}/${year}`
     );
     console.log(await this.page.locator(this.fromInput).inputValue());
   }
+
+
+  public async futureDateFromToday(){
+    let obj = {
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12",
+    };
+
+    await this.page.locator(this.toInput).click()
+
+    for(let i = 0;i < this.randomYearNumber; i++){
+      await this.page.locator(this.nextYear).click()
+    }
+    console.log(this.randomYearNumber);
+    
+    let year = await this.page.locator(this.dateOfTheYear).textContent()
+    let month = await this.page.locator('[selected="selected"]').textContent()
+
+    console.log(year);
+    console.log(month);
+    console.log(this.date);
+
+    await this.page.locator(this.dateFromComponent)
+    .getByRole('link', {name: this.date, exact: true})
+    .click()
+
+    expect(await this.page.locator(this.toInput)
+    .inputValue())
+    .toBe(`${obj[month]}/${this.dateUpdated(this.date)}/${year}`)
+    console.log(await this.page.locator(this.toInput).inputValue());
+    
+    
+    
+
+    }
+
+
 }
