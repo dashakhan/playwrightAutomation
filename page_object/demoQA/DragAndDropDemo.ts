@@ -28,7 +28,7 @@ export class DragAndDropDemo{
         return '[id="droppableExample-tab-preventPropogation"]'
     }
     
-    public async dragAndDropDate(text: string){
+    public async dragAndDropDate(){
         await this.page.locator(this.dragElement).dragTo(this.page.locator(this.dropElement).nth(0))
         expect(await this.page.locator(this.dropElement).nth(0).locator("p").textContent()).toBe('Dropped!')
         expect(await this.page.locator(this.dropElement).nth(0)).toHaveCSS(
