@@ -10,7 +10,7 @@ it.describe('date picker for demo QA', ()=>{
         //   const page: Page = await context.newPage();  ---------- this means ({page}) on line 7
         let datePicker = new DatePicker(page)
         await page.goto('https://demoqa.com/date-picker')
-        // await datePicker.verifyHeader()
+        await datePicker.verifyHeader()
         await datePicker.selectDate()
     })
 })

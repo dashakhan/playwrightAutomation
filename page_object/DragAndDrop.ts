@@ -11,7 +11,7 @@ export class DragAndDrop{
         return '[draggable="true"]'
     }
     get dropHereEl(){
-        return '[id="mydropzone"]'
+        return '[id="mydropzone"]'  
     }
     get dropList(){
         return '[id="droppedlist"]'
