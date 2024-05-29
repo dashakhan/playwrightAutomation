@@ -7,13 +7,13 @@ it.describe('FORM LAYOUTS', ()=>{
         await page.goto('http://localhost:4200/pages/forms/layouts')
     });
   
-    it.only('Inline form', async ({page}) => {
+    it('Inline form', async ({page}) => {
         
         await page.locator('[placeholder="Jane Doe"]').fill('Dasha')
         await page.locator('[placeholder="Jane Doe"] ~ input[placeholder="Email"]').fill('test@gmail.com')
         await page.locator('.custom-checkbox').nth(0).check()
         await page.locator('[class="appearance-filled size-medium shape-rectangle status-primary nb-transition"]').nth(0).click()
-        await page.pause()
+        //await page.pause()
         
     })
     it('Using the Grid',async ({page}) => {
