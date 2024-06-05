@@ -14,7 +14,7 @@ test.describe("ASSERTION", () => {
 
     const title = await page.title();
     console.log(title);
-    expect.soft(title).toContain("LambdaTest ++++++++++++");
+    expect.soft(title).toContain("LambdaTest ++++");
 
     const header = page.locator("h1");
     expect(await header.textContent()).toContain("Next-Generation Mobile Apps and Cross Browser ");

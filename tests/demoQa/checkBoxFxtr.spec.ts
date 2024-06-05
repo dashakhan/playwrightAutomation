@@ -4,12 +4,13 @@ import { test } from "./../../page_object/demoQA/checkBoxFixture";
 
 
 test("checkox fixtr", async ({ page, checkBox }) => {
+
   await checkBox.checkAll();
-  
-  //await expect(page.getByRole('checkbox').first())
-  await expect(page.locator(checkBox.checkedBox)).toBeChecked()
+  await expect(page.locator(checkBox.checkedBox).nth(0)).toBeChecked()
 
 
-//   await page.pause();
+  //expect(await page.isChecked('[class="rct-icon rct-icon-check"]')).toBeTruthy()
+ //await expect(page.getByRole('checkbox').first()).toBeChecked()
+ //   await page.pause();
 });
 
