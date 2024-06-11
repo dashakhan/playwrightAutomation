@@ -114,7 +114,7 @@ export class DatePicker {
 
     await this.page.locator(this.toInput).click()
 
-    for(let i = 0;i < this.randomYearNumber; i++){
+    for(let i = 0; i < this.randomYearNumber; i++){
       await this.page.locator(this.nextYear).click()
     }
     console.log(this.randomYearNumber);
@@ -134,11 +134,5 @@ export class DatePicker {
     .inputValue())
     .toBe(`${obj[month]}/${this.dateUpdated(this.date)}/${year}`)
     console.log(await this.page.locator(this.toInput).inputValue());
-    
-    
-    
-
     }
-
-
 }
