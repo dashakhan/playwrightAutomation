@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 
 test(" request failed ", async ({ page }) => {
-const addBlocker = [
+const adBlocker = [
     "https://stackpath.bootstrapcdn.com",
     "https://ad.plus",
     "chrome-extension://nenlahapcbofgnanklpelkaejcehkggg",
@@ -18,11 +18,12 @@ const addBlocker = [
     "https://cdn-ima.33across.com",
     "https://invstatic101.creativecdn.com",
   ];
+  
 
    await page.route('**/*', (route) =>{
     const url = route.request().url()
 
-    if(addBlocker.some(block => url.startsWith(block))) route.abort()
+    if(adBlocker.some(el => {return url.startsWith(el)})) route.abort()
     else route.continue()
    })
    
