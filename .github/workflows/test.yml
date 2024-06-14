@@ -3,17 +3,17 @@ name: Playwright tests
 on:
   push:
     branches: [develop,master]
-  pull:
+  pull_request:
     branches: [develop,master]
 jobs:
   test:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
-      -uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           node-version: '18'
-      -name: Install dependencies
-       run: npm i --force
-      -name: Install Playwright
+      - name: Install dependencies
+        run: npm i --force
+      - name: Install Playwright
         run: npx playwright install --with-deps
