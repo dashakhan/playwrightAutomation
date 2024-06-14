@@ -1,8 +1,8 @@
 import { test } from "@playwright/test";
 
 test(" pageEror ", async ({ page }) => {
-    await page.route('**\/*.{png, jpg, jpeg, svg}', (body) => {
-        //console.log(body, 'request')
+    await page.route('**\/*.{png,jpg,jpeg,svg}', (body) => {
+        //console.log(body)
     if(body.request().resourceType() === 'image'){
         body.abort()
     } else {
