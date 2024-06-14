@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -uses: actions/checkout@v3
-       with:
-        node-version: '18'
+        with:
+          node-version: '18'
       -name: Install dependencies
        run: npm i --force
       -name: Install Playwright
