@@ -23,8 +23,11 @@ const adBlocker = [
    await page.route('**/*', (route) =>{
     const url = route.request().url()
 
-    if(adBlocker.some(el => {return url.startsWith(el)})) route.abort()
-    else route.continue()
+    if (adBlocker.some(el => url.startsWith(el))) {
+      route.abort()
+    } else {
+      route.continue()
+    }
    })
    
     await page.pause()
