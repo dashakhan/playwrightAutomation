@@ -48,7 +48,7 @@ jobs:
           run: |
             npm run start &
             until $(curl --output /dev/null --silent --head --fail http://localhost:4200); do
-             echo "Waiting for localhost to be available..."
+            echo "Waiting for localhost to be available..."
               sleep 5
             done
       - name: Run tests 
