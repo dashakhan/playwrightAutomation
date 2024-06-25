@@ -11,7 +11,7 @@ it('testing broken images', async({page}) =>{
         const brokenImages = Array.from(document.querySelectorAll('img'))
         const arrOfImages = []
         for(const img of brokenImages){
-            const response = await fetch(img.src).catch(() => null)
+            const response = await fetch(img.src).catch(() => null )
             if(!response || response.status !== 200 || img.naturalHeight === 0 || img.naturalHeight === 0){
                 arrOfImages.push(img.src)
             }
