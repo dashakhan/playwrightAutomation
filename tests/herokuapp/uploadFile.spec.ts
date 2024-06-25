@@ -1,6 +1,6 @@
 import {test as it, expect} from '@playwright/test'
 
-it.only('upload single file', async ({page}) =>{
+it('upload single file', async ({page}) =>{
     await page.goto('https://the-internet.herokuapp.com/upload')
 
     await page.setInputFiles('[id="file-upload"]', 'upload_data/1.png')
@@ -11,10 +11,9 @@ it.only('upload single file', async ({page}) =>{
 it('upload mult file', async ({page}) =>{
     await page.goto('https://blueimp.github.io/jQuery-File-Upload/')
 
-    await page.setInputFiles('input[type="file"]', ['upload_data/1.png','upload_data/2.PNG','upload_data/3.png' ])
-    await expect(page.locator('p.name')).toContainText('1.png')
-    await expect(page.locator('p.name')).toContainText('2.PNG')
-    await expect(page.locator('p.name')).toContainText('3.png')
+    await page.setInputFiles('input[type="file"]', ['upload_data/D1.jpeg','upload_data/D2.jpeg','upload_data/D3.jpeg' ])
+    await expect(page.locator('p.name')).toContainText(['D1.jpeg', 'D2.jpeg', 'D3.jpeg'])
+
 })
 
 
